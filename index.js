@@ -6,6 +6,8 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
 
+
+
 // Cấu hình middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -78,7 +80,7 @@ app.get("/read", async (req, res) => {
 app.get("/data", async (req, res) => {
   try {
     const sheets = google.sheets({ version: "v4", auth: await auth.getClient() });
-    const range = req.query.range || "Sheet1!A1:Z100";
+    const range = req.query.range || "Sheet1!A1:AB100";
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
